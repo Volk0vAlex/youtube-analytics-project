@@ -51,3 +51,22 @@ class Channel:
                        "общее количество просмотров": self.view_count}
         with open(data, "w", encoding="utf-8") as file:
             json.dump(information, file, indent=4, ensure_ascii=False)
+
+    def __str__(self):
+        return f"{self.title}, {self.url}"
+
+    def __add__(self, other):
+        return int(self.subscriber_count) + int(other.subscriber_count)
+
+    def __sub__(self, other):
+        return int(self.subscriber_count) - int(other.subscriber_count)
+
+    def __gt__(self, other):
+        if int(self.subscriber_count) > int(other.subscriber_count):
+            return True
+        return False
+
+    def __ge__(self, other):
+        if int(self.subscriber_count) >= int(other.subscriber_count):
+            return True
+        return False
